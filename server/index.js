@@ -1,6 +1,7 @@
+/* @flow strict */
+
 import Express from 'express';
 import HTTP from 'http';
-// import JSX from 'express-react-views';
 
 import Log from '/utils/Log';
 import normalizePort from '/utils/normalizePort';
@@ -17,9 +18,6 @@ export const App = Express();
 const port = normalizePort(process.env.PORT);
 
 App.set('port', port);
-// App.set('views', `${__dirname}/Modules/Render/View`);
-// App.set('view engine', 'jsx');
-// App.engine('jsx', JSX.createEngine({ transformViews: false }));
 
 HTTP
   .createServer(App)

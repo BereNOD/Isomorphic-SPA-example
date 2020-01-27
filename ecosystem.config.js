@@ -1,3 +1,5 @@
+/* @flow strict */
+
 module.exports = {
   apps : [{
     name: 'API',

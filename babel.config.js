@@ -1,5 +1,8 @@
+/* @flow strict */
+
 const alias = {
   '/client': './client',
+  '/DB': './server/DB',
   '/ErrorHandler': './server/ErrorHandler',
   '/Layouts': './server/Layouts',
   '/Middleware': './server/Middleware',

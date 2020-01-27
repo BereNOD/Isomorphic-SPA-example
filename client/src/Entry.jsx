@@ -3,9 +3,11 @@
 import * as React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { hot } from 'react-hot-loader/root';
-// import _ from 'lodash';
+import _ from 'lodash';
 
-import routes from './routes';
+import routes, {
+  type RouteType
+} from './routes';
 
 type PropsType = {
   renderer: string
@@ -13,9 +15,13 @@ type PropsType = {
 
 export const SERVER = 'server';
 export const BROWSER = 'browser';
-export const MetaContext = React.createContext({
+export type MetaContextType = {
+  renderer: typeof SERVER | typeof BROWSER
+};
+export const defaultMetaContext: MetaContextType = {
   renderer: SERVER
-});
+};
+export const MetaContext = React.createContext<MetaContextType>(defaultMetaContext);
 
 const Entry = ({
   renderer,
@@ -27,7 +33,7 @@ const Entry = ({
     }}
   >
     <Switch>
-      {routes.map(({ Component, params = {} }, index): React.Element<typeof Route> => (
+      {_.map(routes, ({ Component, params = {} }: RouteType, index: number): React.Element<typeof Route> => (
         <Route {...params} key={`Route-number-${index}`}>
           <Component {...props} />
         </Route>

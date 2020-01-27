@@ -8,7 +8,7 @@ type PropsType = {
 
 const Title = ({
   children
-}: PropsType) => (
+}: PropsType): React.Element<'h1'> => (
   <h1>{children}</h1>
 );
 

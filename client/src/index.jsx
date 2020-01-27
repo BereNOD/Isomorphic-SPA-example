@@ -1,8 +1,11 @@
-import React from 'react';
+/* @flow strict */
+
+import * as React from 'react';
 import { hydrate } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Entry, { BROWSER } from './Entry';
-import './styles.css';
+import 'normalize.css';
+import 'reset-css';
 import './styles.scss';
 
 

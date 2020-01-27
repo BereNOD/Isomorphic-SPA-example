@@ -1,18 +1,19 @@
 /* @flow strict */
 
 import * as React from 'react';
-import { MetaContext, BROWSER } from './../Entry.jsx';
+import {
+  MetaContext,
+  type MetaContextType,
+  BROWSER
+} from './../Entry.jsx';
 
 type PropsType = {
   children: React.Node
 };
 
-const Home = ({
-  children,
-  ...props
-}: PropsType) => (
+const Suspense = ({ children, ...props }: PropsType): React.Element<typeof MetaContext.Consumer> => (
   <MetaContext.Consumer>
-    {({ renderer }) => renderer === BROWSER ? (
+    {({ renderer }: MetaContextType): React.Element<typeof MetaContext.Consumer> => renderer === BROWSER ? (
       <React.Suspense {...props}>
         {children}
       </React.Suspense>
@@ -20,4 +21,4 @@ const Home = ({
   </MetaContext.Consumer>
 );
 
-export default Home;
+export default Suspense;

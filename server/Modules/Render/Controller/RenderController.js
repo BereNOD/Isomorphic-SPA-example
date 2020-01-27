@@ -2,12 +2,14 @@
 
 import * as React from 'react';
 import { renderToStaticNodeStream } from 'react-dom/server';
-import View from '/Modules/Render/View';
+import RenderModel from '/Modules/Render/Model/RenderModel';
 
 class RenderController {
-  static render = ({ baseUrl }, res) => {
-    res.write('<!DOCTYPE html>');
-    renderToStaticNodeStream(<View url={baseUrl} />)
+  static render = ({ baseUrl }: $Request, res: $Response) => {
+    res
+      .write('<!DOCTYPE html>');
+
+    renderToStaticNodeStream(<RenderModel.View url={baseUrl} />)
       .pipe(res);
   };
 }
