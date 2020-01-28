@@ -21,7 +21,8 @@ class ToDoController {
 
   static create = async (req: $Request, res: $Response, next: nextFunction): Promise<void> => {
     try {
-      return res.json(await ToDoModel.create());
+      console.log();
+      return res.json(await ToDoModel.create(req.body));
     } catch (error) {
       return next(error);
     }
@@ -29,7 +30,7 @@ class ToDoController {
 
   static update = async (req: $Request, res: $Response, next: nextFunction): Promise<void> => {
     try {
-      return res.json(await ToDoModel.update());
+      return res.json(await ToDoModel.update(+req.params.id, req.body));
     } catch (error) {
       return next(error);
     }
@@ -37,7 +38,7 @@ class ToDoController {
 
   static delete = async (req: $Request, res: $Response, next: nextFunction): Promise<void> => {
     try {
-      return res.json(await ToDoModel.delete());
+      return res.json(await ToDoModel.delete(+req.params.id));
     } catch (error) {
       return next(error);
     }

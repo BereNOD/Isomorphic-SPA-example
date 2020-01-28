@@ -14,6 +14,7 @@ class RenderModel {
         {process.env.NODE_ENV !== 'development' ? (
           <link rel="stylesheet" href={`/main.css?version=${version}`}/>
         ) : null}
+        <base href="/"/>
       </head>
       <body>
         <div id="root">

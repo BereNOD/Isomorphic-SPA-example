@@ -18,7 +18,7 @@ export type RoutesType = Array<RouteType>;
 const routes: RoutesType = [
   { Component: Home, params: { exact: true, path: '/' } },
   { Component: About, params: { path: '/about' } },
-  { Component: ToDo, params: { path: '/to-do' } }
+  { Component: ToDo, params: { path: '/to-do/:id?' } }
 ];
 
 export default routes;

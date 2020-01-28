@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackMonitor = require('webpack-monitor');
 
@@ -64,6 +65,7 @@ module.exports = (env, argv) => {
         'react-dom': '@hot-loader/react-dom'
       },
       modules: [
+        path.resolve(__dirname),
         path.resolve(__dirname, 'src'),
         path.resolve(__dirname, '..', 'common'),
         'node_modules'
@@ -97,7 +99,8 @@ module.exports = (env, argv) => {
         template: require('html-webpack-template'),
         inject: false,
         appMountId: 'root'
-      })
+      }),
+      new BaseHrefWebpackPlugin({ baseHref: '/' })
     );
   } else {
     config.plugins.push(

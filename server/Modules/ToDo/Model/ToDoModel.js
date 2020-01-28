@@ -3,6 +3,12 @@
 import DBExec from '/DB';
 import Error from '/ErrorHandler/Error.js';
 
+export type RecordType = {
+  id: null | number,
+  name: string,
+  position_id: ?number
+};
+
 class ToDoModel {
   static get = async (id: number): Promise<null> => {
     const [[row]] = await DBExec('SELECT * FROM work.worker WHERE worker.id = ?;', [id]);
@@ -20,16 +26,29 @@ class ToDoModel {
     return rows;
   };
 
-  static create = async (): Promise<null> => {
-    return null;
+  static create = async (record: RecordType): Promise<null> => {
+    const [{ insertId }] = await DBExec('INSERT INTO work.worker (`name`) VALUES (?)', [record.name]);
+
+    return {
+      id: insertId,
+      list: await ToDoModel.getList()
+    };
   };
 
-  static update = async (): Promise<null> => {
-    return null;
+  static update = async (id: number, record: RecordType): Promise<null> => {
+    await DBExec('UPDATE work.worker SET `name` = ? WHERE id = ?', [record.name, id]);
+
+    return {
+      list: await ToDoModel.getList()
+    };
   };
 
-  static delete = async (): Promise<null> => {
-    return null;
+  static delete = async (id: number): Promise<null> => {
+    await DBExec('DELETE FROM work.worker WHERE worker.id = ?;', [id]);
+
+    return {
+      list: await ToDoModel.getList()
+    };
   };
 }
 

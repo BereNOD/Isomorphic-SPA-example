@@ -6,6 +6,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Entry, { BROWSER } from './Entry';
 import 'normalize.css';
 import 'reset-css';
+import 'react-toastify/scss/main.scss';
 import './styles.scss';
 
 

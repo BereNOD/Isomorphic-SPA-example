@@ -1,7 +1,7 @@
 /* @flow strict */
 
 export type RecordType = {
-  td: number,
+  id: null | number,
   name: string,
   position_id: ?number
 };
