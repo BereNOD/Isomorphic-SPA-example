@@ -29,7 +29,7 @@ CREATE TABLE `salary2` (
   PRIMARY KEY (`id`),
   KEY `fk_salary2_1_idx` (`worker_id`),
   CONSTRAINT `fk_salary2_1` FOREIGN KEY (`worker_id`) REFERENCES `worker` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

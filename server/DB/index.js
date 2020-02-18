@@ -6,10 +6,10 @@ import Promise from 'bluebird';
 const DBExec = async (sql: string, args: Array<string | number>): Promise<[[], []]> => {
   const connection = await MySQL
     .createConnection({
-      host: 'localhost',
+      host: process.env.MYSQL_HOST,
       user: 'root',
-      password: 'password',
-      database: 'work',
+      password: process.env.MYSQL_PASSWORD,
+      database: process.env.MYSQL_DATABASE,
       Promise
     });
 
